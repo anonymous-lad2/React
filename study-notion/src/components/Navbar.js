@@ -30,7 +30,7 @@ const Navbar = () => {
                     </button>
                 </Link>
 
-                <Link to="/">
+                <Link to="signup">
                     <button className="bg-richblack-800 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
                         Sign up
                     </button>
