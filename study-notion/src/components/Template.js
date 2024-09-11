@@ -17,7 +17,7 @@ const Template = ({ title, desc1, desc2, image, formType, setIsLoggedIn }) => {
                     <span className="text-blue-100 italic">{desc2}</span>
                 </p>
 
-                {formType == 'login' ? <Login/> : <Signup/>}
+                {formType === "signup" ? <Signup setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />}
 
                 <button className="w-full flex items-center justify-center rounded-[8px] font-medium text-richblack-100 border-richblack-700 border px-[12px] py-[8px] gap-x-2 mt-6">
                     <FcGoogle/>

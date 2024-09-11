@@ -1,7 +1,7 @@
 import image from '../assets/login.png'
 import Template from '../components/Template'
 
-const Login = ()=> {
+const Login = ({ setIsLoggedIn })=> {
 
     return (
 
@@ -11,6 +11,7 @@ const Login = ()=> {
                 desc2= 'Education to future-proof your carrer.'
                 image= {image}
                 formType='login'
+                setIsLoggedIn={setIsLoggedIn}
         />
     )
 }

@@ -1,7 +1,7 @@
 import Template from "../components/Template"
 import image from '../assets/signup.png'
 
-const signup = ()=> {
+const signup = ({ setIsLoggedIn })=> {
     return (
         <Template
             title='Join the million learnings to code with StudyNotion for free'
@@ -9,6 +9,7 @@ const signup = ()=> {
             desc2= 'Education to future-proof your carrer.'
             image={image}
             formType='signup'
+            setIsLoggedIn={setIsLoggedIn}
         />
     )
 }
