@@ -1,9 +1,17 @@
+import image from '../assets/login.png'
+import Template from '../components/Template'
 
 const Login = ()=> {
+
     return (
-        <div className="flex flex-1 justify-center items-center text-white text-3xl">
-            LOG IN
-        </div>
+
+        <Template
+                title= 'Welcome Back'
+                desc1= 'Build skills for today, tomorrow, and beyond.'
+                desc2= 'Education to future-proof your carrer.'
+                image= {image}
+                formType='login'
+        />
     )
 }
 

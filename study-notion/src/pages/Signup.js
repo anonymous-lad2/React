@@ -1,9 +1,15 @@
+import Template from "../components/Template"
+import image from '../assets/signup.png'
 
 const signup = ()=> {
     return (
-        <div className="flex flex-1 justify-center items-center text-white text-3xl">
-            SIGN UP
-        </div>
+        <Template
+            title='Join the million learnings to code with StudyNotion for free'
+            desc1= 'Build skills for today, tomorrow, and beyond.'
+            desc2= 'Education to future-proof your carrer.'
+            image={image}
+            formType='signup'
+        />
     )
 }
 
