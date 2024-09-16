@@ -4,7 +4,8 @@
 
 .loader {
     width: 48px;
-    height: 48px;
+    height: 90vh;
+    margin: auto ;
     border: 3px dotted #FFF;
     border-style: solid solid dotted dotted;
     border-radius: 50%;
