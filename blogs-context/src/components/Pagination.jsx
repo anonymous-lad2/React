@@ -6,10 +6,10 @@ const Pagination = ()=>{
 
     const {posts,loading} = useContext(AppContext)
     return (
-        <div className='w-9/12 max-w-[700px] mx-auto'>
+        <div className='w-9/12 max-w-[700px] mx-auto mt-[50px] mb-[35px] flex justify-center items-center flex-col'>
             {loading ? 
                 
-                (<Loader className='flex justify-center items-center w-full h-screen'/>) 
+                (<Loader/>) 
                 
                     : 
                 
@@ -22,7 +22,7 @@ const Pagination = ()=>{
                         :
 
                         (posts.map((post) => (
-                            <div key={post.id} className='my-11'>
+                            <div key={post.id} className='my-7'>
                                 <p className='font-bold text-xl'>{post.title}</p> 
                                 <p className='text-lg'>By <span className='italic text-base'>{post.author} </span> on 
                                     <span className='font-bold border-b-2 border-b-black border-dotted text-base'> {post.category}</span></p>

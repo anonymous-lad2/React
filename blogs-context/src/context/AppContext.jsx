@@ -7,7 +7,7 @@ export const AppContext = createContext();
 export default function AppContextProvider({ children }) {
     const [loading, setLoading] = useState(false);
     const [pages, setPages] = useState(1);
-    const [toatalPages, setTotalPages] = useState(null);
+    const [totalPages, setTotalPages] = useState(null);
     const [posts, setPosts] = useState([]);
 
     async function fetchData(page = 1) {
@@ -18,7 +18,7 @@ export default function AppContextProvider({ children }) {
             const response = await data.json()
             console.log(response)
             setPages(response.page)
-            setTotalPages(response.toatalPages)
+            setTotalPages(response.totalPages)
             setPosts(response.posts)
         }
         catch (error) {
@@ -36,7 +36,7 @@ export default function AppContextProvider({ children }) {
         setLoading,
         pages,
         setPages,
-        toatalPages,
+        totalPages,
         setTotalPages,
         posts,
         setPosts,
