@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Make sure this is correct
+import { useNavigate } from "react-router-dom";
 import baseUrl from '../baseUrl';
 
 
@@ -17,10 +17,10 @@ export default function AppContextProvider({ children }) {
         setLoading(true);
         let url = `${baseUrl}?page=${pages}`;
         if (tag) {
-            url += `&tag=${tag}`;
+            url += `${baseUrl}?tag=${tag}`;
         }
         if (category) {
-          url += `&category=${category}`;
+          url += `${baseUrl}?category=${category}`;
         }
         try {
             const data = await fetch(url)

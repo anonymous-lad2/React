@@ -41,8 +41,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/blog/:blogId" element={<BlogPage /> } />
-      <Route path="/tags/:tag" element={<TagPage />} />
-      <Route path="/categories/:category" element={<CategoryPage />} />
+      <Route path="/blog/:tag" element={<TagPage />} />
+      <Route path="/blog/:category" element={<CategoryPage />} />
     </Routes>
   );
 }

@@ -4,6 +4,7 @@ import { AppContext } from "../context/AppContext";
 import Header from "../components/Header";
 import BlogDetails from "../components/BlogDetails";
 import { baseUrl } from "../baseUrl";
+import Footer from "../components/Footer";
 
 const BlogPage = () => {
   const [blog, setBlog] = useState(null);
@@ -39,26 +40,31 @@ const BlogPage = () => {
   return (
     <div>
       <Header />
-      <div>
-        <button onClick={() => navigation(-1)}>Back</button>
+      <div className="w-10/12 max-w-[700px] mx-auto mt-[110px] mb-[70px]">
+        <div className="ml-[60px]">
+          <button onClick={() => navigation(-1)}
+            className="border-2 border-gray-300 py-1 px-4 rounded-md mb-5"
+            >Back</button>
+        </div>
+        <div>
+          {loading ? (
+            <p>Loading...</p>
+          ) : blog ? (
+            <div>
+              <BlogDetails post={blog} />
+              <h2 className="mt-[50px] font-extrabold text-3xl ml-[60px] mb-7">Releated Blogs</h2>
+              {relatedblog.map((post) => (
+                <div key={post.id} className="my-[30px]">
+                  <BlogDetails post={post} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="font-bold text-lg">No Blog Found</p>
+          )}
+        </div>
       </div>
-      <div>
-        {loading ? (
-          <p>Loading...</p>
-        ) : blog ? (
-          <div>
-            <BlogDetails post={blog} />
-            <h2>Releated Blogs</h2>
-            {relatedblog.map((post) => (
-              <div key={post.id}>
-                <BlogDetails post={post} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No Blog Found</p>
-        )}
-      </div>
+      <Footer />
     </div>
   );
 };
