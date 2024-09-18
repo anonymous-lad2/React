@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useNavigate } from "react";
 import baseUrl from '../baseUrl'
 
 
@@ -9,9 +9,17 @@ export default function AppContextProvider({ children }) {
     const [pages, setPages] = useState(1);
     const [totalPages, setTotalPages] = useState(null);
     const [posts, setPosts] = useState([]);
+    const navigate = useNavigate()
 
-    async function fetchData(page = 1) {
+    async function fetchData(page = 1, tag = null, category) {
         setLoading(true);
+        let url = `${baseUrl}?page=${page}`;
+        if (tag) {
+            url += `&tag=${tag}`;
+        }
+        if (category) {
+          url += `&category=${category}`;
+        }
         try {
             let url = `${baseUrl}?page=${page}`
             const data = await fetch(url)
