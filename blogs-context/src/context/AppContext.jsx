@@ -1,5 +1,6 @@
-import { createContext, useEffect, useState, useNavigate } from "react";
-import baseUrl from '../baseUrl'
+import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Make sure this is correct
+import baseUrl from '../baseUrl';
 
 
 export const AppContext = createContext();
@@ -11,9 +12,10 @@ export default function AppContextProvider({ children }) {
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate()
 
-    async function fetchData(page = 1, tag = null, category) {
+    async function fetchData(pages = 1, tag = null, category) {
         setLoading(true);
-        let url = `${baseUrl}?page=${page}`;
+        setLoading(true);
+        let url = `${baseUrl}?page=${pages}`;
         if (tag) {
             url += `&tag=${tag}`;
         }
@@ -21,9 +23,10 @@ export default function AppContextProvider({ children }) {
           url += `&category=${category}`;
         }
         try {
-            let url = `${baseUrl}?page=${page}`
             const data = await fetch(url)
             const response = await data.json()
+            if (!response.posts || response.posts.length === 0)
+                throw new Error("Something Went Wrong");
             console.log(response)
             setPages(response.page)
             setTotalPages(response.totalPages)
@@ -39,6 +42,11 @@ export default function AppContextProvider({ children }) {
         setLoading(false);
     }
 
+    const handlePageChange = (pages)=>{
+        navigate({search: `?page=${pages}`})
+        setPages(pages);
+    }
+
     const value = {
         loading,
         setLoading,
@@ -51,12 +59,6 @@ export default function AppContextProvider({ children }) {
         fetchData,
         handlePageChange
     }
-
-    function handlePageChange(page){
-        setPages(page);
-        fetchData(page)
-    }
-
 
     return <AppContext.Provider value={value}>
         {children}

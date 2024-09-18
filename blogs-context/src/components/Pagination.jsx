@@ -1,42 +1,26 @@
 import { useContext } from 'react'
 import Loader from './Loader'
 import { AppContext } from '../context/AppContext'
+import BlogDetails from './BlogDetails'
 
-const Pagination = ()=>{
+const Pagination = () => {
 
-    const {posts,loading} = useContext(AppContext)
+    const { posts, loading } = useContext(AppContext)
     return (
-        <div className='w-9/12 max-w-[700px] mx-auto mt-[50px] mb-[35px] flex justify-center items-center flex-col'>
-            {loading ? 
-                
-                (<Loader/>) 
-                
-                    : 
-                
-                (
-                    posts.length === 0 ? (
-                        <div>
-                            No post found
-                        </div>) 
-                        
-                        :
-
-                        (posts.map((post) => (
-                            <div key={post.id} className='my-7'>
-                                <p className='font-bold text-xl'>{post.title}</p> 
-                                <p className='text-lg'>By <span className='italic text-base'>{post.author} </span> on 
-                                    <span className='font-bold border-b-2 border-b-black border-dotted text-base'> {post.category}</span></p>
-                                <p>Posted On <span> {post.date}</span></p>
-                                <p className='text-lg'>{post.content}</p>
-                                <div className='flex gap-2'>
-                                    {post.tags.map((tag, index) => (
-                                        <span key={index} className='text-sm text-blue-700 font-bold underline'>{`#${tag}`}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        )))
-                )
-            }
+        <div className="flex flex-col gap-y-10 my-4">
+            {loading ? (
+                <div className="min-h-[80vh] w-full flex justify-center items-center">
+                    <p className="text-center font-bold text-3xl">Loading</p>
+                </div>
+            ) : posts.length === 0 ? (
+                <div className="min-h-[80vh] w-full flex justify-center items-center">
+                    <p className="text-center font-bold text-3xl">No Blogs Found !</p>
+                </div>
+            ) : (
+                posts.map((post) => (
+                    <BlogDetails key={post.id} post={post} />
+                ))
+            )}
         </div>
     )
 }
